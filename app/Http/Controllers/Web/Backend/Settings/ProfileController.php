@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 
-class ProfileController extends Controller {
+class ProfileController extends Controller
+{
     /**
      * Display the profile settings page.
      *
      * @return View
      */
-    public function showProfile() {
+    public function showProfile()
+    {
         $userDetails = User::where('id', Auth::id())->first();
         return view('backend.layouts.settings.profile_settings', ['userDetails' => $userDetails]);
     }
@@ -32,7 +34,8 @@ class ProfileController extends Controller {
      * @param Request $request
      * @return RedirectResponse
      */
-    public function UpdateProfile(Request $request) {
+    public function UpdateProfile(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'name'  => 'nullable|max:100|min:2',
             'email' => 'nullable|email|unique:users,email,' . auth()->user()->id,
@@ -59,7 +62,8 @@ class ProfileController extends Controller {
      * @param Request $request
      * @return RedirectResponse
      */
-    public function UpdatePassword(Request $request) {
+    public function UpdatePassword(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'old_password' => 'required',
             'password'     => 'required|confirmed|min:8',
@@ -89,7 +93,8 @@ class ProfileController extends Controller {
      * @param Request $request
      * @return JsonResponse
      */
-    public function UpdateProfilePicture(Request $request) {
+    public function UpdateProfilePicture(Request $request)
+    {
         try {
             $request->validate([
                 'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg|max:4048',

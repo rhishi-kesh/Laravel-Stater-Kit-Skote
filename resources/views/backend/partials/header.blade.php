@@ -9,11 +9,12 @@
                     <a href="index.html" class="logo logo-light"
                         style="width: 60%; height: 60%; display: block; text-align: center;">
                         <span class="logo-sm">
-                            <img src="{{ asset('backend') }}/assets/images/logo-minimize.svg" alt="">
+                            <img src="{{ asset($systemSetting->favicon ?? 'backend/assets/images/logo-minimize.svg') }}"
+                                alt="">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ asset('backend') }}/assets/images/logo-default.svg" alt=""
-                                style="width: 100%; height: 100%;">
+                            <img src="{{ asset($systemSetting->logo ?? 'backend/assets/images/logo-default.svg') }}"
+                                alt="" style="width: 100%; height: 100%;">
                         </span>
                     </a>
                 </div>
@@ -36,22 +37,27 @@
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="rounded-circle header-profile-user"
-                            src="{{ asset('backend') }}/assets/images/profile.jpeg" alt="Header Avatar">
+                            src="{{ asset(Auth::user()->avatar ?? 'backend/assets/images/profile.jpeg') }}"
+                            alt="Header Avatar">
                         <span class="d-none d-xl-inline-block ms-1" key="t-henry"
-                            style="font-size: 16px; color: #000; ">Henry</span>
+                            style="font-size: 16px; color: #000; ">{{ auth()->user()->name }}</span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('profile.setting') }}">
                             <i class="align-middle bx bx-user font-size-16 me-1"></i>
                             <span key="t-profile">Profile</span>
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('system.index') }}">
                             <i class="align-middle bx bx-cog font-size-16 me-1"></i>
                             <span key="t-my-wallet">Setting</span>
                         </a>
-                        <a class="dropdown-item text-danger" href="#">
+                        <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                             <i class="align-middle bx bx-power-off font-size-16 me-1 text-danger"></i>
                             <span key="t-logout">Logout</span>
                         </a>
