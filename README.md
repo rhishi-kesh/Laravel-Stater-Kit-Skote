@@ -15,11 +15,11 @@
 To Install & Run This Project You Have To Follow Thoose Following Steps:
 
 ```sh
-git clone https://github.com/rhishi-kesh/Laravel-Stater-Kit-Craft.git
+git clone https://github.com/rhishi-kesh/Laravel-Stater-Kit-Skote.git
 ```
 
 ```sh
-cd Laravel-Stater-Kit-Craft
+cd Laravel-Stater-Kit-Skote
 ```
 
 ```sh
