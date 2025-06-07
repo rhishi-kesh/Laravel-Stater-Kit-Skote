@@ -38,7 +38,7 @@
                     <form method="POST" action="{{ route('system.update') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="mt-4 col-md-6">
+                            <div class="mt-3 col-md-6">
                                 <div class="input-style-1">
                                     <label for="title">Title:</label>
                                     <input type="text" placeholder="Enter Title" id="title"
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
 
-                            <div class="mt-4 col-md-6">
+                            <div class="mt-3 col-md-6">
                                 <div class="input-style-1">
                                     <label for="email">Email:</label>
                                     <input type="email" placeholder="Enter Email" id="email"
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="mt-4 col-md-6">
+                            <div class="mt-3 col-md-6">
                                 <div class="input-style-1">
                                     <label for="system_name">System Name:</label>
                                     <input type="text" placeholder="System Name" id="system_name"
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
 
-                            <div class="mt-4 col-md-6">
+                            <div class="mt-3 col-md-6">
                                 <div class="input-style-1">
                                     <label for="copyright_text">Copy Rights Text:</label>
                                     <input type="text" placeholder="Copy Rights Text" id="copyright_text"
@@ -98,13 +98,14 @@
                         </div>
 
                         <div class="row">
-                            <div class="mt-4 col-md-6">
+                            <div class="mt-3 col-md-6">
                                 <div class="input-style-1">
                                     <label for="logo">Logo:</label>
                                     <input type="file" class="dropify @error('logo') is-invalid @enderror" name="logo"
                                         id="logo"
-                                        data-default-file="@isset($setting){{ asset($setting->logo) }}@endisset" />
+                                        data-default-file="{{ asset($setting->logo ?? 'backend/assets/images/image_placeholder.png') }}" />
                                 </div>
+
                                 @error('logo')
                                 <span class="text-danger" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -112,12 +113,12 @@
                                 @enderror
                             </div>
 
-                            <div class="mt-4 col-md-6">
+                            <div class="mt-3 col-md-6">
                                 <div class="input-style-1">
                                     <label for="favicon">Favicon:</label>
                                     <input type="file" class="dropify @error('favicon') is-invalid @enderror"
                                         name="favicon" id="favicon"
-                                        data-default-file="@isset($setting){{ asset($setting->favicon) }}@endisset" />
+                                        data-default-file="{{ asset($setting->favicon ?? 'backend/assets/images/image_placeholder.png') }}" />
                                 </div>
                                 @error('favicon')
                                 <span class="text-danger" role="alert">
@@ -128,10 +129,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="mt-4 col-12">
+                            <div class="mt-3 col-12">
                                 <div class="input-style-1">
                                     <label for="description">About System:</label>
-                                    <textarea placeholder="Type here..." id="description" name="description"
+                                    <textarea placeholder="Type here..." id="summernote" name="description"
                                         class="form-control @error('description') is-invalid @enderror">
                                             {{ $setting->description ?? '' }}
                                         </textarea>
@@ -144,9 +145,9 @@
                             </div>
                         </div>
 
-                        <div class="mt-4 col-12">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="{{ route('admin.dashboard') }}" class="btn btn-danger me-2">Cancel</a>
+                        <div class="mt-3 col-12">
+                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                            <a href="{{ route('admin.dashboard') }}" class="btn btn-danger me-2 btn-lg">Cancel</a>
                         </div>
                     </form>
                 </div>
@@ -155,13 +156,3 @@
     </div>
 </div>
 @endsection
-
-@push('script')
-<script>
-    ClassicEditor
-            .create(document.querySelector('#description'))
-            .catch(error => {
-                console.error(error);
-            });
-</script>
-@endpush

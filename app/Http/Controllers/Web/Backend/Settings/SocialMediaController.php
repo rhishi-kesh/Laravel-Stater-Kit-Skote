@@ -9,13 +9,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
-class SocialMediaController extends Controller {
-    public function index() {
+class SocialMediaController extends Controller
+{
+    public function index()
+    {
         $social_link = SocialMedia::latest('id')->get();
         return view('backend.layouts.settings.social_media', compact('social_link'));
     }
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'social_media.*'    => 'required|string',
             'profile_link.*'    => 'required|url',
@@ -52,7 +55,8 @@ class SocialMediaController extends Controller {
         }
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         try {
             SocialMedia::destroy($id);
 

@@ -1,5 +1,5 @@
 @extends('backend.app')
-@section('title', 'Profile Settings')
+@section('title', 'Social Settings')
 @push('style')
 <style>
     .drop-custom {
@@ -63,8 +63,8 @@
                 <div class="card card-body">
                     <form action="{{ route('social.update') }}" method="POST">
                         @csrf
-                        <div style="display: flex;justify-content: end;margin-bottom: 10px;">
-                            <button class="btn btn-success" type="button" onclick="addSocialField()"
+                        <div style="display: flex; justify-content: start; margin-bottom: 10px;">
+                            <button class="btn btn-primary btn-lg" type="button" onclick="addSocialField()"
                                 style="font-weight: 900" title="Add a new social media field">Add</button>
                         </div>
                         <div id="social_media_container">
@@ -105,8 +105,8 @@
                         </div>
 
                         <div class="mt-4 col-12">
-                            <button type="submit" class="btn btn-primary" title="Submit the form">Submit</button>
-                            <a href="{{ route('admin.dashboard') }}" class="btn btn-danger me-2"
+                            <button type="submit" class="btn btn-primary btn-lg" title="Submit the form">Submit</button>
+                            <a href="{{ route('admin.dashboard') }}" class="btn btn-danger btn-lg me-2"
                                 title="Cancel and go back to the dashboard">Cancel</a>
                         </div>
                     </form>
@@ -195,7 +195,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type: 'DELETE',
-                url: '{{ route('social.delete', '') }}/' + socialLinkId,
+                url: '{{ route('social.delete', ':id') }}'.replace(':id', socialLinkId),
                 data: {
                     _token: '{{ csrf_token() }}'
                 },

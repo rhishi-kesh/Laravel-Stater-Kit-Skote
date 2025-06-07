@@ -66,7 +66,7 @@
                         <form method="POST" action="{{ route('update.profile') }}">
                             @csrf
                             <div class="row">
-                                <div class="mt-4 col-12">
+                                <div class="mt-2 col-12">
                                     <div class="input-style-1">
                                         <label for="name">User Name</label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-4 col-12">
+                                <div class="mt-2 col-12">
                                     <div class="input-style-1">
                                         <label for="email">Email</label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
@@ -95,7 +95,7 @@
                                 </div>
 
                                 <div class="mt-4 col-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -106,7 +106,7 @@
                         <form method="POST" action="{{ route('update.Password') }}">
                             @csrf
                             <div class="row">
-                                <div class="mt-4 col-12">
+                                <div class="mt-2 col-12">
                                     <div class="input-style-1">
                                         <label for="old_password">Current Password</label>
                                         <input type="password"
@@ -120,7 +120,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-4 col-12">
+                                <div class="mt-2 col-12">
                                     <div class="input-style-1">
                                         <label for="password">New Password</label>
                                         <input type="password"
@@ -134,7 +134,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-4 col-12">
+                                <div class="mt-2 col-12">
                                     <div class="input-style-1">
                                         <label for="password_confirmation">Confirm Password</label>
                                         <input type="password"
@@ -150,8 +150,9 @@
                                 </div>
 
                                 <div class="mt-4 col-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <a href="{{ route('admin.dashboard') }}" class="btn btn-danger me-2">Cancel</a>
+                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                    <a href="{{ route('admin.dashboard') }}"
+                                        class="btn btn-danger me-2 btn-lg">Cancel</a>
                                 </div>
                             </div>
                         </form>

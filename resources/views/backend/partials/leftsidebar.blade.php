@@ -25,7 +25,7 @@
                 <li class="menu-title" key="t-apps">Apps</li>
 
                 <li
-                    class="{{ request()->routeIs(['profile.setting', 'system.index', 'mail.setting', 'social.index', 'dynamic_page.*']) ? 'mm-active' : '' }}">
+                    class="{{ request()->routeIs(['profile.setting', 'system.index', 'mail.setting', 'social.index', 'dynamic_page.*']) ? 'mm-active sidebarParentActive' : '' }}">
                     <a href="javascript: void(0);" class="has-arrow waves-effect" style="color: #000">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -39,19 +39,29 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('profile.setting') }}" key="t-invoice-list">Profile Settings</a>
+                            <a href="{{ route('profile.setting') }}"
+                                class="{{ request()->routeIs(['profile.setting']) ? 'active' : '' }}"
+                                key="t-invoice-list">Profile Settings</a>
                         </li>
                         <li>
-                            <a href="{{ route('system.index') }}" key="t-invoice-detail">System Settings</a>
+                            <a href="{{ route('system.index') }}"
+                                class="{{ request()->routeIs(['system.index']) ? 'active' : '' }}"
+                                key="t-invoice-detail">System Settings</a>
                         </li>
                         <li>
-                            <a href="{{ route('social.index') }}" key="t-invoice-detail">Social Settings</a>
+                            <a href="{{ route('social.index') }}"
+                                class="{{ request()->routeIs(['social.index']) ? 'active' : '' }}"
+                                key="t-invoice-detail">Social Settings</a>
                         </li>
                         <li>
-                            <a href="{{ route('dynamic_page.index') }}" key="t-invoice-detail">Dynamic Page</a>
+                            <a href="{{ route('dynamic_page.index') }}"
+                                class="{{ request()->routeIs(['dynamic_page.*']) ? 'active' : '' }}"
+                                key="t-invoice-detail">Dynamic Page</a>
                         </li>
                         <li>
-                            <a href="{{ route('mail.setting') }}" key="t-invoice-detail">Mail Settings</a>
+                            <a href="{{ route('mail.setting') }}"
+                                class="{{ request()->routeIs(['mail.setting']) ? 'active' : '' }}"
+                                key="t-invoice-detail">Mail Settings</a>
                         </li>
                     </ul>
                 </li>

@@ -6,7 +6,7 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box">
-                    <a href="index.html" class="logo logo-light"
+                    <a href="{{ route('admin.dashboard') }}" class="logo logo-light"
                         style="width: 60%; height: 60%; display: block; text-align: center;">
                         <span class="logo-sm">
                             <img src="{{ asset($systemSetting->favicon ?? 'backend/assets/images/logo-minimize.svg') }}"

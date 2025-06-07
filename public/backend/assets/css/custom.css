@@ -51,3 +51,15 @@
 label {
     font-size: 14px !important;
 }
+
+.sidebarParentActive a svg {
+    color: #00A3FF !important;
+}
+
+.sidebarParentActive a span {
+    color: #00A3FF !important;
+}
+
+.sidebarChildActive {
+    color: #00A3FF !important;
+}

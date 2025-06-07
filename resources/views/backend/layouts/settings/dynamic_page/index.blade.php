@@ -1,74 +1,72 @@
 @extends('backend.app')
+@section('title', 'Dynamic Pages')
+@section('page-content')
+<!--begin::Toolbar-->
+<div class="toolbar" id="kt_toolbar">
+    <div class="flex-wrap container-fluid d-flex flex-stack flex-sm-nowrap">
+        <!--begin::Info-->
+        <div class="flex-wrap d-flex flex-column align-items-start justify-content-center me-2">
+            <!--begin::Title-->
+            <h1 class="text-dark fw-bold fs-2">
+                @yield('title' ?? "Dashboard") <small class="text-muted fs-6 fw-normal ms-1"></small>
+            </h1>
+            <!--end::Title-->
 
-@section('title', 'Dynamic Page')
+            <!--begin::Breadcrumb-->
+            <ul class="breadcrumb fw-semibold fs-base" style="padding: 0 0 0 5px;">
+                <li class="breadcrumb-item text-muted">
+                    <a href="{{ route('admin.dashboard') }}" class="text-muted text-hover-primary">
+                        Home </a>
+                </li>
 
-@section('content')
-    <!--begin::Toolbar-->
-    <div class="toolbar" id="kt_toolbar">
-        <div class=" container-fluid  d-flex flex-stack flex-wrap flex-sm-nowrap">
-            <!--begin::Info-->
-            <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
-                <!--begin::Title-->
-                <h1 class="text-dark fw-bold my-1 fs-2">
-                    Dashboard <small class="text-muted fs-6 fw-normal ms-1"></small>
-                </h1>
-                <!--end::Title-->
+                <li class="breadcrumb-item text-muted">
+                    @yield('title' ?? "Dashboard") </li>
 
-                <!--begin::Breadcrumb-->
-                <ul class="breadcrumb fw-semibold fs-base my-1">
-                    <li class="breadcrumb-item text-muted">
-                        <a href="{{ route('admin.dashboard') }}" class="text-muted text-hover-primary">
-                            Home </a>
-                    </li>
-
-                    <li class="breadcrumb-item text-muted"> Setting </li>
-                    <li class="breadcrumb-item text-muted"> Dynamic Page </li>
-
-                </ul>
-                <!--end::Breadcrumb-->
-            </div>
-            <!--end::Info-->
+            </ul>
+            <!--end::Breadcrumb-->
         </div>
+        <!--end::Info-->
     </div>
-    <!--end::Toolbar-->
+</div>
+<!--end::Toolbar-->
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card p-5">
-                    <div class="card-style mb-30">
-                        <div class="d-flex justify-content-end mb-3">
-                            <a href="{{ route('dynamic_page.create') }}" class="btn btn-primary">Add New
-                                Page</a>
-                        </div>
-                        <div class="table-wrapper table-responsive">
-                            <table id="data-table" class="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Page Title</th>
-                                        <th>Page Content</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- Dynamic Data --}}
-                                </tbody>
-                            </table>
-                        </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="p-3 card">
+                <div class="card-style mb-30">
+                    <div class="mb-4 d-flex justify-content-start">
+                        <a href="{{ route('dynamic_page.create') }}" class="btn btn-primary btn-lg">Add New
+                            Page</a>
+                    </div>
+                    <div class="table-wrapper table-responsive">
+                        <table id="data-table" class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Page Title</th>
+                                    <th>Page Content</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- Dynamic Data --}}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 
 
 @push('script')
-    <script>
-        $(document).ready(function() {
+<script>
+    $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -84,7 +82,8 @@
                     processing: true,
                     responsive: true,
                     serverSide: true,
-
+                    searching: false,
+                    paging: false,
                     language: {
                         processing: `<div class="text-center">
                             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -231,5 +230,5 @@
                 }
             })
         }
-    </script>
+</script>
 @endpush
